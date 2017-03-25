@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['ngRoute']);
 
-app.constant("baseURL", "http://localhost:3000/");
+app.constant("baseURL", "http://104.236.183.66:3000/");
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
