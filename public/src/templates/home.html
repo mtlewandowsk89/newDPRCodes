@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="title">DPR Code Generator</h1>
+		</div>
+		<div class="col-xs-12">
+			<p class="subTitle">Providing inspiration since 2017</p>
+		</div>
+		<div class="col-xs-6 col-sm-4 col-sm-offset-3">
+			<p class"wordNumber"># of words</p>
+		</div>
+		<div class="col-xs-6 col-sm-2">
+			<select class="amount form-control">
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			</select>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-sm-offset-4">
+			<button class="random btn btn-primary" type="button" ng-click="create.name.$setDirty()">Get new DPR Code</button>
+		</div>
+		<div class="wordArea col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="word word1"></span>
+			<div class="checkbox-inline checkDiv1">
+			  <label>
+			    <input class="keep word1-check" type="checkbox" value="true">
+			    Keep
+			  </label>
+			</div>
+		</div>
+		<div class="wordArea col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="word word2"></span>
+			<div class="checkbox-inline checkDiv2">
+			  <label>
+			    <input class="keep word2-check" type="checkbox" value="true">
+			    Keep
+			  </label>
+			</div>
+		</div>
+		<div class="wordArea col-xs-12 col-sm-6 col-sm-offset-3">
+			<span class="word word3"></span>
+			<div class="checkbox-inline checkDiv3">
+			  <label>
+			    <input class="keep word3-check" type="checkbox" value="true">
+			    Keep
+			  </label>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-sm-offset-4">
+			<form action="" class="create form-group" name="create" novalidate>
+				<input type="text" hidden ng-model="dprcode.name" id="codeName" class="name" name="name" required>
+				<div class="descriptionContainer">
+					<label for="description">Description of new DPR code:</label>
+					<textarea class="form-control description" rows="3" ng-model="dprcode.description" id="description" name="description" required></textarea>
+				</div>
+				<button class="submit btn btn-success save" type="button" ng-disabled="create.$invalid" ng-click="addCode(dprcode)">Save it!</button>
+			</form>
+		</div>
+	</div>
+</div>
