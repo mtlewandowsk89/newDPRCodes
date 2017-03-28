@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['ngRoute']);
 
-app.constant("baseURL", "http://104.236.183.66:3000/");
+app.constant("baseURL", "http://mattlewandowski.com/");
 
 app.config(['$locationProvider', function($locationProvider) {
   $locationProvider.hashPrefix('');
@@ -32,7 +32,7 @@ app.config(function($routeProvider) {
 });
 
 app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
-  	length = words.length;
+  length = words.length;
 	amount = 1;
 	number = Math.floor((Math.random() * 99) + 1);
 
