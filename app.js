@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var url = '127.0.0.1:27017';
 mongoose.connect(url);
@@ -19,6 +20,8 @@ var users = require('./routes/users');
 var codes = require('./routes/codes');
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
