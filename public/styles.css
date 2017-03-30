@@ -83,15 +83,14 @@ input[type=checkbox] {
 
 .codeMedia {
 	width: auto;
-	margin: 20px 10px;
-	min-height: 120px;
+	margin: 5px;
 	border: 1px solid black;
 }
 
 @media only screen and (min-width: 768px) {
 	.codeMedia {
 		width: 100%;
-		margin: 20px auto;
+		margin: 10px auto;
 	}
 }
 

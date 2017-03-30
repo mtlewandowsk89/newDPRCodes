@@ -26,4 +26,18 @@ codeRouter.route('/')
 	});
 });
 
+codeRouter.route('/:codeId')
+.get(function(req, res, next) {
+	Codes.findById(req.params.codeId, function (err, code) {
+		if (err) throw err;
+		res.json(code);
+	});
+})
+.delete(function(req, res, next) {
+	Codes.findByIdAndRemove(req.params.codeId, function (err, code) {
+		if (err) throw err;
+		res.json(code);
+	});
+});
+
 module.exports = codeRouter;

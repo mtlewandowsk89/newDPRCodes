@@ -26,6 +26,10 @@ app.config(function($routeProvider) {
   	templateUrl: "src/templates/easyAdd.html",
   	controller: "easyCtrl"
   })
+  .when("/delete/:id", {
+    templateUrl: "src/templates/codeList.html",
+    controller: "deleteCode"
+  })
   .otherwise({
     redirectTo: "/"
   });
@@ -103,4 +107,10 @@ app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location) 
 		$http.post(baseURL + "codes", easycode);
 		$window.location.href = "#codeList";
 	};
+});
+
+app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL) {
+  $scope.codeID = ($routeParams.id);
+  $http.delete(baseURL + "codes/" + $scope.codeID);
+  $window.location.href = '#codeList';
 });
