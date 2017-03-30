@@ -98,3 +98,6 @@ input[type=checkbox] {
 	font-weight: bold;
 }
 
+.glyphicon-remove {
+	color: red;
+}
