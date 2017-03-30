@@ -83,6 +83,7 @@ input[type=checkbox] {
 
 .codeMedia {
 	width: auto;
+	position: relative;
 	margin: 5px;
 	border: 1px solid black;
 }
@@ -100,4 +101,24 @@ input[type=checkbox] {
 
 .glyphicon-remove {
 	color: red;
+}
+
+.delete {
+	margin-left: 35px;
+	font-size: 20px;
+}
+
+.deleteMobile {
+	position: absolute;
+	top: 2px;
+	font-size: 18px;
+	right: 2px;
+}
+
+.nameSection {
+	padding-left: 0px;
+}
+
+.codeHeading {
+	border-bottom: 1px solid black;
 }
