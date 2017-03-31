@@ -36,6 +36,13 @@ app.config(function($routeProvider) {
 });
 
 app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
+
+  $('.search').submit(function(e) {
+    e.preventDefault();
+  });
+
+  $scope.location = $location;
+
   length = words.length;
 	amount = 1;
 	number = Math.floor((Math.random() * 99) + 1);
