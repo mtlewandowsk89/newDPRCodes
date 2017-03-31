@@ -82,6 +82,8 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
 });
 
 app.controller('listCtrl', function($scope, codes) {
+  $scope.search = $scope.codeSearch;
+  $scope.showCodes = false;
 	codes.getCodes()
     .then(
       function(response) {
