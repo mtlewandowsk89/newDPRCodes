@@ -26,7 +26,7 @@
 				<h3 class="codeHeading">Delete</h3>
 			</div>
 		</div>
-		<div class="codeSection col-xs-12 hidden-xs" ng-if="showCodes" ng-repeat="x in codes | orderBy: 'date'">
+		<div class="codeSection col-xs-12 hidden-xs" ng-if="showCodes" ng-repeat="x in codes | orderBy: 'date' | filter:codeSearch">
 			<div class="col-xs-12 col-sm-4 nameSection">
 				<p>{{x.name | lowercase}}</p>
 			</div>
