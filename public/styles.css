@@ -1,14 +1,5 @@
 body {
-	background-image: url('src/background.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-@media only screen and (min-width: 1240px) {
-	body {
-		background-position: initial;
-		background-size: cover;
-	}
+	background-color: #ffb3a5;
 }
 
 p {
