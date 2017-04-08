@@ -6,9 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-var url = '127.0.0.1:27017';
-mongoose.connect(url);
+var config = require('./config');
+
+mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
@@ -21,18 +24,33 @@ var codes = require('./routes/codes');
 
 var app = express();
 
+//secure traffic only
+// app.all('*', function(req, res, next) {
+//   if (req.secure) {
+//     return next();
+//   };
+//   res.redirect('https://' + req.hostname + ':' + app.get('secPort') + req.url);
+// });
+
 app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'wordApp2');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//passport config
+var User = require('./models/user');
+app.use(passport.initialize());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//load the view if user verified
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);

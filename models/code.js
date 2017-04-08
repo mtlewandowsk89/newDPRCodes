@@ -13,6 +13,10 @@ var codeSchema = new Schema({
 	date: {
 		type: String,
 		required: true
+	},
+	postedBy: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
 	}
 }, {
 	timestamps: true
