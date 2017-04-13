@@ -35,7 +35,7 @@ app.config(function($routeProvider) {
   });
 });
 
-app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
+app.controller('myCtrl', function($scope, $http, baseURL, $window, $location, $rootScope) {
 
   $('.searchForm').submit(function(e) {
     e.preventDefault();
@@ -76,19 +76,19 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
 		$scope.dprcode.name = 'Code ' + number + ' ' + newWord;
 	};
 
-	$scope.dprcode = {
+	$rootScope.dprcode = {
       name: '',
       description: '',
       date: new Date()
     };
 
-    $scope.addCode = function(dprcode) {
+    $rootScope.addCode = function(dprcode) {
       $http.post(baseURL + "codes", dprcode);
       $window.location.href = '#codeList';
     };
 });
 
-app.controller('listCtrl', function($scope, codes, $location) {
+app.controller('listCtrl', function($scope, codes, $location, $rootScope) {
 
   $('.searchForm').submit(function(e) {
     e.preventDefault();
@@ -99,7 +99,7 @@ app.controller('listCtrl', function($scope, codes, $location) {
 	codes.getCodes()
     .then(
       function(response) {
-        $scope.codes = response.data;
+        $rootScope.codes = response.data;
         $scope.showCodes = true;
       },
       function(response) {
@@ -108,24 +108,24 @@ app.controller('listCtrl', function($scope, codes, $location) {
     );
 });
 
-app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location) {
+app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location, $rootScope) {
 
-	$scope.easycode = {
+	$rootScope.easycode = {
  	  id: '',
       name: '',
       description: '',
       date: new Date()
     };
 
-	$scope.addEasyCode = function(easycode) {
+	$rootScope.addEasyCode = function(easycode) {
 		$http.post(baseURL + "codes", easycode);
 		$window.location.href = "#codeList";
 	};
 });
 
-app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL) {
-  $scope.codeID = ($routeParams.id);
-  $http.delete(baseURL + "codes/" + $scope.codeID);
+app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL, $rootScope) {
+  $rootScope.codeID = ($routeParams.id);
+  $http.delete(baseURL + "codes/" + $rootScope.codeID);
   $window.location.href = '#codeList';
 });
 
