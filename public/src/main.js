@@ -83,7 +83,7 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location, $t
     };
 
     $scope.addCode = function(dprcode) {
-      $http.post(baseURL + "codes", dprcode);
+      $http.post(baseURL + "codes", dprcode)
       .then($window.location.href = '#codeList');
     };
 });
@@ -118,13 +118,13 @@ app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location, 
     };
 
 	$scope.addEasyCode = function(easycode) {
-		$http.post(baseURL + "codes", easycode);
+		$http.post(baseURL + "codes", easycode)
     .then($window.location.href = "#codeList");
 	};
 });
 
 app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL, $timeout) {
   $scope.codeID = ($routeParams.id);
-  $http.delete(baseURL + "codes/" + $scope.codeID);
+  $http.delete(baseURL + "codes/" + $scope.codeID)
   .then($window.location.href = '#codeList');
 });
