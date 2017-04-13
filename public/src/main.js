@@ -37,7 +37,7 @@ app.config(function($routeProvider) {
 
 app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
 
-  $('.search').submit(function(e) {
+  $('.searchForm').submit(function(e) {
     e.preventDefault();
   });
 
@@ -90,7 +90,7 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
 
 app.controller('listCtrl', function($scope, codes, $location) {
 
-  $('.search').submit(function(e) {
+  $('.searchForm').submit(function(e) {
     e.preventDefault();
   });
 
