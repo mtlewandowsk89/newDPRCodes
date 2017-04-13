@@ -35,7 +35,7 @@ app.config(function($routeProvider) {
   });
 });
 
-app.controller('myCtrl', function($scope, $http, baseURL, $window, $location, $interval) {
+app.controller('myCtrl', function($scope, $http, baseURL, $window, $location, $timeout) {
 
   $('.searchForm').submit(function(e) {
     e.preventDefault();
@@ -84,7 +84,7 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location, $i
 
     $scope.addCode = function(dprcode) {
       $http.post(baseURL + "codes", dprcode);
-      $interval(function() {
+      $timeout(function() {
         $window.location.href = '#codeList';
       }, 100);
     };
@@ -110,7 +110,7 @@ app.controller('listCtrl', function($scope, codes, $location) {
     );
 });
 
-app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location, $interval) {
+app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location, $timeout) {
 
 	$scope.easycode = {
  	  id: '',
@@ -121,16 +121,16 @@ app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location, 
 
 	$scope.addEasyCode = function(easycode) {
 		$http.post(baseURL + "codes", easycode);
-    $interval(function() {
+    $timeout(function() {
 		    $window.location.href = "#codeList";
     }, 100);
 	};
 });
 
-app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL, $interval) {
+app.controller('deleteCode', function($scope, $routeParams, $window, $http, baseURL, $timeout) {
   $scope.codeID = ($routeParams.id);
   $http.delete(baseURL + "codes/" + $scope.codeID);
-  $interval(function() {
+  $timeout(function() {
     $window.location.href = '#codeList';
   }, 100);
 });
