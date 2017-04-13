@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngDialog']);
+var app = angular.module('myApp', ['ngRoute']);
 
 app.constant("baseURL", "http://mattlewandowski.com/");
 
