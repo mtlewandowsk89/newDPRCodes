@@ -2,22 +2,22 @@ var express = require('express');
 var codeRouter = express.Router();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var Verify = require('./verify');
+// var Verify = require('./verify');
 var Codes = require('../models/code');
 
 codeRouter.use(bodyParser.json());
 codeRouter.route('/')
 .get(function(req, res, next) {
 	Codes.find({}, function (err, code) {
-		if (err) throw err;
+		if (err) next(err);
 		res.json(code);
 	});
 })
-.post(Verify.verifyOrdinaryUser, function(req, res, next) {
+.post(function(req, res, next) {
 	Codes.create(req.body, function (err, code) {
-		if (err) throw err;
+		if (err) next(err);
 
-		req.body.postedBy = req.decoded._doc._id;
+		// req.body.postedBy = req.decoded._id;
 
 		var id = code._id;
 		res.writeHead(200, {
@@ -31,18 +31,18 @@ codeRouter.route('/')
 codeRouter.route('/:codeId')
 .get(function(req, res, next) {
 	Codes.findById(req.params.codeId, function (err, code) {
-		if (err) throw err;
+		if (err) next(err);
 		res.json(code);
 	});
 })
-.delete(Verify.verifyOrdinaryUser, function(req, res, next) {
+.delete(function(req, res, next) {
 	Codes.findByIdAndRemove(req.params.codeId, function (err, code) {
-		if (code.id(req.params.codeId).postedBy != req.decoded._doc._id) {
-			var err = new Error('You are not authorized to delete this code!');
-			err.status = 403;
-			return next(err);
-		}
-		if (err) throw err;
+		// if (code.id(req.params.codeId).postedBy != req.decoded._id) {
+		// 	var err = new Error('You are not authorized to delete this code!');
+		// 	err.status = 403;
+		// 	return next(err);
+		// }
+		if (err) next(err);
 		res.json(code);
 	});
 });

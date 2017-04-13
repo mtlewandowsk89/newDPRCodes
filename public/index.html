@@ -35,6 +35,18 @@
  		      	<li><a href="#easyAdd">Easy Add</a></li>
  		        <li><a href="#codeList">Code List</a></li>
  		      </ul>
+ 		      <ul class="nav navbar-nav navbar-right">
+                <li ng-if="!loggedIn"><a ng-click="openLogin()">
+                <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                <li ng-if="loggedIn">
+                <a>{{username}}</a>
+                </li>
+                <li ng-if="loggedIn">
+                <a ng-click="logOut()">
+                <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                </li>
+            </ul>
           <form class="navbar-form navbar-left" action="#" ng-show="location.path() == '/codeList'">
             <div class="form-group">
               <input type="search" class="form-control search" placeholder="Search" name="search" ng-model="codeSearch">

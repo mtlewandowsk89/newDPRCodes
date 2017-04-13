@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute', 'ngDialog']);
 
 app.constant("baseURL", "http://mattlewandowski.com/");
 
@@ -123,3 +123,4 @@ app.controller('deleteCode', function($scope, $routeParams, $window, $http, base
   $http.delete(baseURL + "codes/" + $scope.codeID);
   $window.location.href = '#codeList';
 });
+
