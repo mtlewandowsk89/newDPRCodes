@@ -89,6 +89,11 @@ app.controller('myCtrl', function($scope, $http, baseURL, $window, $location) {
 });
 
 app.controller('listCtrl', function($scope, codes, $location) {
+
+  $('.search').submit(function(e) {
+    e.preventDefault();
+  });
+
   $scope.search = $scope.codeSearch;
   $scope.showCodes = false;
 	codes.getCodes()
@@ -109,7 +114,7 @@ app.controller('easyCtrl', function($scope, $http, baseURL, $window, $location) 
  	  id: '',
       name: '',
       description: '',
-      date: new moment()
+      date: new Date()
     };
 
 	$scope.addEasyCode = function(easycode) {
